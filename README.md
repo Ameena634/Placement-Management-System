@@ -1,2 +1,2 @@
 # Placement-Management-System
-This Placement Management System allows students to browse through placement opportunities.
+This Placement Management System allows students to browse through placement opportunities. This project is a centralised portal designed to simplify campus placements. It allows students to explore opportunities based on eligibility criteria like CGPA and arrears, while administrators can easily post job drives, update status, and manage student reports. A user-friendly interface improves communication and reduces manual workload for the placement cell. 
