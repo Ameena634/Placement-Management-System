@@ -1,0 +1,73 @@
+{% extends "student/base.html" %}
+{% load static %}
+{% block content %}
+{% if message %}
+<script>
+alert("{{ message }}")
+</script>
+{% endif %}
+
+ <!-- Contact Section -->
+ <section id="contact" class="contact section">
+
+    <!-- Section Title -->
+    <div class="container section-title" data-aos="fade-up">
+      
+      <h2>Apply Placement</h2>
+      
+    </div><!-- End Section Title -->
+
+    <div class="container" data-aos="fade-up" data-aos-delay="100">
+
+      <div class="row gy-4">
+
+        <div class="col-lg-7">
+          <form action="" method="post" data-aos="fade-up" data-aos-delay="200" enctype="multipart/form-data">
+            {% csrf_token %}
+            <div class="row gy-4">
+                <div class="col-md-12">
+                    <label for="name-field" class="pb-2">Resume</label>
+                    <input type="file" name="resume" id="name-field" class="form-control" required="">
+                  </div>
+                  <div class="col-md-12">
+                    <label for="name-field" class="pb-2">Internships</label>
+                    <textarea type="text" class="form-control" name="internship" id="email-field" required=""></textarea>
+                  </div>
+              <div class="col-md-12">
+                <label for="name-field" class="pb-2">Projects</label>
+                <textarea type="text" class="form-control" name="projects" id="email-field" required=""></textarea>
+              </div>
+
+              <div class="col-md-12">
+                <label for="email-field" class="pb-2">Achievements</label>
+                <textarea type="text" class="form-control" name="achivements" id="email-field" required=""></textarea>
+              </div>
+              <div class="col-md-12">
+                <label for="email-field" class="pb-2">Technical Skills</label>
+                <textarea type="text" class="form-control" name="technical_skills" id="email-field" required=""></textarea>
+              </div>
+              <div class="col-md-12">
+                <label for="email-field" class="pb-2">Soft Skills</label>
+                <textarea type="text" class="form-control" name="soft_skills" id="email-field" required=""></textarea>
+              </div>
+              <div class="col-md-12">
+                <label for="email-field" class="pb-2">Certificates</label>
+                <input type="file" class="form-control" name="certificate" id="email-field" required="">
+              </div>
+             
+              <div class="col-md-12 text-center">
+                
+                <button type="submit">Apply</button>
+              </div>
+
+            </div>
+          </form>
+        </div><!-- End Contact Form -->
+
+      </div>
+
+    </div>
+
+  </section><!-- /Contact Section -->
+
+{% endblock %}

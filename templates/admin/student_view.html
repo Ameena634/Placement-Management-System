@@ -1,0 +1,44 @@
+{% extends "admin/base.html" %}
+{% load static %}
+{% block content %}
+{% if message %}
+<script>
+alert("{{ message }}")
+</script>
+{% endif %}
+
+<div class="container add-emp">		
+    <center><h1 style="color:black;"><strong>Student Details</strong></h1><br></center>
+    <table class="table table-bordered table-hover">
+            <tr>			
+                <th class="p-3 mb-2 text-light" style="background:#10bc69;">Image </th>
+                <th class="p-3 mb-2 text-light" style="background:#10bc69;">Name </th>
+                <th class="p-3 mb-2 text-light" style="background:#10bc69;">Email</th>
+                <th class="p-3 mb-2 text-light" style="background:#10bc69;">Roll No</th>
+                <th class="p-3 mb-2 text-light" style="background:#10bc69;">Program</th>
+                <th class="p-3 mb-2 text-light" style="background:#10bc69;">Department</th>
+                <th class="p-3 mb-2 text-light" style="background:#10bc69;">Entrollment Year</th>
+                <th class="p-3 mb-2 text-light" style="background:#10bc69;">Delete</th>
+            </tr> 
+            
+            {% for i in std %}
+            <tr>
+                    <td> <img src="{{ i.image.url }}" alt="avatar" style="width: 150px;"></td>
+                    <td>{{i.user.first_name}}</td>
+                    <td>{{i.user.email}}</td>
+                    <td>{{i.roll_no}}</td>
+                    <td>{{i.program}}</td>
+                    <td>{{i.department}}</td>
+                    <td>{{i.entroll_year}}</td>
+
+                    <td><a href="reject?id={{ i.user_id}}" class=" btn btn-danger">Delete</a></td>
+
+            </tr>  
+            {% endfor %}
+
+
+            
+    </table>
+</div>
+
+{% endblock %}

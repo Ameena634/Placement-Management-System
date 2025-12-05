@@ -1,0 +1,49 @@
+{% extends "admin/base.html" %}
+{% load static %}
+{% block content %}
+{% if message %}
+<script>
+alert("{{ message }}")
+</script>
+{% endif %}
+
+ <!-- Contact Section -->
+ <section id="contact" class="contact section">
+
+    <!-- Section Title -->
+    <div class="container section-title" data-aos="fade-up">
+      
+      <h2>Upload Offer Letter</h2>
+      
+    </div><!-- End Section Title -->
+
+    <div class="container" data-aos="fade-up" data-aos-delay="100">
+
+      <div class="row gy-4">
+
+        <div class="col-lg-7">
+          <form action="" method="post" data-aos="fade-up" data-aos-delay="200" enctype="multipart/form-data">
+            {% csrf_token %}
+            <div class="row gy-4">
+                <div class="col-md-12">
+                    <label for="name-field" class="pb-2">upload</label>
+                    <input type="file" name="offer_letter" id="name-field" class="form-control" required="">
+                  </div>
+                
+             
+              <div class="col-md-12 text-center">
+                
+                <button type="submit">Apply</button>
+              </div>
+
+            </div>
+          </form>
+        </div><!-- End Contact Form -->
+
+      </div>
+
+    </div>
+
+  </section><!-- /Contact Section -->
+
+{% endblock %}

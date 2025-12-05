@@ -1,0 +1,50 @@
+{% extends "student/base.html" %}
+{% load static %}
+{% block content %}
+{% if message %}
+<script>
+alert("{{ message }}")
+</script>
+{% endif %}
+
+<div class="container add-emp">		
+    <center><h1 style="color:black;"><strong>Applied Placements</strong></h1><br></center>
+    <table class="table table-bordered table-hover">
+            <tr>			
+                <th class="p-3 mb-2 text-light" style="background:#10bc69;">Placement ID</th>
+                <th class="p-3 mb-2 text-light" style="background:#10bc69;">Company name</th>
+                <th class="p-3 mb-2 text-light" style="background:#10bc69;" colspan="2">Status</th>
+
+            </tr> 
+            
+            {% for i in plc %}
+            <tr>
+                    <td>{{i.placement.p_id}}</td>
+                    <td>{{i.placement.company_name}}</td>
+                    {% if i.status == 'added' %}
+                    <td>Applied</td>
+                    {% elif i.status == 'rejected' %}
+                    <td>Rejected</td>
+                    {% elif i.status == 'approved' %}
+                    <td>Selected for interview</td>
+                    <td><a href="update_status?id={{i.id}}" class="btn btn-primary">Update status</a></td>
+                    {% elif i.status == 'not selected' %}
+                    <td>Not Selected</td>
+                    {% elif i.status == 'offer letter uploaded' %}
+                    <td>You have been placed!! <br><a href="{{i.offer_letter.url}}" target="_blank">Offer Letter</a></td>
+                    {% else %}
+                    <td>{{i.status}}</td>
+                    <td><a href="update_status?id={{i.id}}" class="btn btn-primary">Update status</a></td>
+                    {% endif %}
+  
+
+
+            </tr>  
+            {% endfor %}
+
+
+            
+    </table>
+</div>
+
+{% endblock %}

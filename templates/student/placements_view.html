@@ -1,0 +1,42 @@
+{% extends "student/base.html" %}
+{% load static %}
+{% block content %}
+{% if message %}
+<script>
+alert("{{ message }}")
+</script>
+{% endif %}
+
+<div class="container add-emp">		
+    <center><h1 style="color:black;"><strong>All Placements</strong></h1><br></center>
+    <table class="table table-bordered table-hover">
+            <tr>			
+                <th class="p-3 mb-2 text-light" style="background:#10bc69;">Placement ID</th>
+                <th class="p-3 mb-2 text-light" style="background:#10bc69;">Company name</th>
+                <th class="p-3 mb-2 text-light" style="background:#10bc69;">Posted date</th>
+                <th class="p-3 mb-2 text-light" style="background:#10bc69;">Last date</th>
+                <th class="p-3 mb-2 text-light" style="background:#10bc69;">Passout year</th>
+                <th class="p-3 mb-2 text-light" style="background:#10bc69;">Min CGPA</th>
+                <th class="p-3 mb-2 text-light" style="background:#10bc69;">Max Arrears</th>
+            </tr> 
+            
+            {% for i in plc %}
+            <tr>
+                    <td>{{i.p_id}}</td>
+                    <td>{{i.company_name}}</td>
+                    <td>{{i.c_date}}</td>
+                    <td>{{i.last_date}}</td>
+                    <td>{{i.passout_year}}</td>
+                    <td>{{i.cgpa}}</td>
+                    <td>{{i.arrears}}</td>
+
+
+            </tr>  
+            {% endfor %}
+
+
+            
+    </table>
+</div>
+
+{% endblock %}

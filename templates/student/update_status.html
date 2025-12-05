@@ -1,0 +1,55 @@
+{% extends "student/base.html" %}
+{% load static %}
+{% block content %}
+{% if message %}
+<script>
+alert("{{ message }}")
+</script>
+{% endif %}
+
+ <!-- Contact Section -->
+ <section id="contact" class="contact section">
+
+    <!-- Section Title -->
+    <div class="container section-title" data-aos="fade-up">
+      
+      <h2>Update Placement Status</h2>
+      
+    </div><!-- End Section Title -->
+
+    <div class="container" data-aos="fade-up" data-aos-delay="100">
+
+      <div class="row gy-4">
+
+        <div class="col-lg-7">
+          <form action="" method="post" data-aos="fade-up" data-aos-delay="200" enctype="multipart/form-data">
+            {% csrf_token %}
+            <div class="row gy-4">
+                <div class="col-md-12">
+                    <label for="name-field" class="pb-2">Resume</label>
+                    {% comment %} <input type="file" name="resume" id="name-field" class="form-control" required=""> {% endcomment %}
+                    <select name="status" id="status" class="form-control">
+                        <option disabled selected>---Select status---</option>
+                        <option value="completed 1st round">completed 1st round</option>
+                        <option value="completed 2nd round">completed 2nd round</option>
+                        <option value="completed technical round">completed technical round</option>
+                        <option value="completed HR interview">completed HR interview</option>
+                        <option value="interview completed">interview completed</option>
+                      </select>
+                  </div>
+              <div class="col-md-12 text-center">
+                
+                <button type="submit">Update</button>
+              </div>
+
+            </div>
+          </form>
+        </div><!-- End Contact Form -->
+
+      </div>
+
+    </div>
+
+  </section><!-- /Contact Section -->
+
+{% endblock %}

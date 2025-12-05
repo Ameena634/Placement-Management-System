@@ -1,0 +1,72 @@
+{% extends "admin/base.html" %}
+{% load static %}
+{% block content %}
+{% if message %}
+<script>
+alert("{{ message }}")
+</script>
+{% endif %}
+
+ <!-- Contact Section -->
+ <section id="contact" class="contact section">
+
+    <!-- Section Title -->
+    <div class="container section-title" data-aos="fade-up">
+      
+      <h2>Add Placement drive</h2>
+      
+    </div><!-- End Section Title -->
+
+    <div class="container" data-aos="fade-up" data-aos-delay="100">
+
+      <div class="row gy-4">
+
+        <div class="col-lg-7">
+          <form action="" method="post" data-aos="fade-up" data-aos-delay="200">
+            {% csrf_token %}
+            <div class="row gy-4">
+                <div class="col-md-12">
+                    <label for="name-field" class="pb-2">Company Name</label>
+                    <input type="text" name="company_name" id="name-field" class="form-control" required="">
+                  </div>
+                  <div class="col-md-12">
+                    <label for="name-field" class="pb-2">ID</label>
+                    <input type="text" name="p_id" id="name-field" class="form-control" required="">
+                  </div>
+              <div class="col-md-12">
+                <label for="name-field" class="pb-2">Last date to apply</label>
+                <input type="date" name="l_date" id="name-field" class="form-control" required="">
+              </div>
+
+              <div class="col-md-12">
+                <label for="email-field" class="pb-2">Minimum CGPA</label>
+                <input type="text" class="form-control" name="cgpa" id="email-field" required="">
+              </div>
+              <div class="col-md-12">
+                <label for="email-field" class="pb-2">Maximum Arrears</label>
+                <input type="text" class="form-control" name="arrears" id="email-field" required="">
+              </div>
+              <div class="col-md-12">
+                <label for="email-field" class="pb-2">Passout Year</label>
+                <input type="text" class="form-control" name="passout_year" id="email-field" required="">
+              </div>
+              <div class="col-md-12">
+                <label for="email-field" class="pb-2">Description</label>
+                <textarea type="text" class="form-control" name="description" id="email-field" required=""></textarea>
+              </div>
+              <div class="col-md-12 text-center">
+                
+                <button type="submit">Create Placement</button>
+              </div>
+
+            </div>
+          </form>
+        </div><!-- End Contact Form -->
+
+      </div>
+
+    </div>
+
+  </section><!-- /Contact Section -->
+
+{% endblock %}

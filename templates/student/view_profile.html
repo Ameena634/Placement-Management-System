@@ -1,0 +1,211 @@
+{% extends "student/base.html" %}
+{% load static %}
+{% block content %}
+{% if message %}
+<script>
+alert("{{ message }}")
+</script>
+{% endif %}
+
+<section style="background-color: #eee;">
+    <div class="container ">
+      
+      <div class="row">
+        {% for i in std %}
+        <div class="col-lg-4">
+          <div class="card mb-4">
+            <div class="card-body text-center">
+              <img src="{{ i.image.url }}" alt="avatar"
+                class="rounded-circle img-fluid" style="width: 150px;">
+              <h5 class="my-3">{{ i.user.first_name }}</h5>
+              {% if i.roll_no %}
+              <p class="text-muted mb-1">{{ i.roll_no }}</p>
+              {% else %}
+              <p class="text-muted mb-1">Edit profile to add roll no.</p>
+              {% endif %}
+              {% if i.department %}
+              <p class="text-muted mb-1">{{ i.department }}</p>
+              {% else %}
+              <p class="text-muted mb-1">Edit profile to add branch</p>
+              {% endif %}
+              <div class="d-flex justify-content-center mb-2">
+                
+                <a href="edit_profile?id={{i.id}}" data-mdb-button-init data-mdb-ripple-init class="btn btn-success">Edit</a>
+              </div>
+            </div>
+          </div>
+          
+        </div>
+        <div class="col-lg-8">
+          <div class="card mb-4">
+            <div class="card-body">
+                <p class="mb-4"><span class="text-success font-italic me-1">Personal</span> Details
+                </p>
+              <div class="row">
+                <div class="col-sm-3">
+                  <p class="mb-0">Full Name</p>
+                </div>
+                <div class="col-sm-9">
+                  <p class="text-muted mb-0">{{ i.user.first_name }}</p>
+                </div>
+              </div>
+              <hr>
+              <div class="row">
+                <div class="col-sm-3">
+                  <p class="mb-0">College Email</p>
+                </div>
+                <div class="col-sm-9">
+                  <p class="text-muted mb-0">{{ i.user.email }}</p>
+                </div>
+              </div>
+              <hr>
+              <div class="row">
+                <div class="col-sm-3">
+                  <p class="mb-0">Email</p>
+                </div>
+                <div class="col-sm-9">
+                    {% if i.p_email %}
+                  <p class="text-muted mb-0">{{ i.p_email }}</p>
+                    {% else %}
+                    <p class="text-muted mb-0">Not Available</p>
+                    {% endif %}
+                </div>
+              </div>
+              <hr>
+              <div class="row">
+                <div class="col-sm-3">
+                  <p class="mb-0">Phone</p>
+                </div>
+                <div class="col-sm-9">
+                    {% if i.phone %}
+                  <p class="text-muted mb-0">{{ i.phone }}</p>
+                    {% else %}
+                    <p class="text-muted mb-0">Not Available</p>
+                  {% endif %}
+                </div>
+              </div>
+              <hr>
+              <div class="row">
+                <div class="col-sm-3">
+                  <p class="mb-0">Address</p>
+                </div>
+                <div class="col-sm-9">
+                    {% if i.address %}
+                    <p class="text-muted mb-0">{{ i.address }}</p>
+                      {% else %}
+                      <p class="text-muted mb-0">Not Available</p>
+                    {% endif %}
+                </div>
+              </div>
+              <hr>
+              <div class="row">
+                <div class="col-sm-3">
+                  <p class="mb-0">Date of birth</p>
+                </div>
+                <div class="col-sm-9">
+                    {% if i.dob %}
+                    <p class="text-muted mb-0">{{ i.dob }}</p>
+                      {% else %}
+                      <p class="text-muted mb-0">Not Available</p>
+                    {% endif %}
+                </div>
+              </div>
+              <hr>
+              <div class="row">
+                <div class="col-sm-3">
+                  <p class="mb-0">Gender</p>
+                </div>
+                <div class="col-sm-9">
+                    {% if i.gender %}
+                    <p class="text-muted mb-0">{{ i.gender }}</p>
+                      {% else %}
+                      <p class="text-muted mb-0">Not Available</p>
+                    {% endif %}
+                </div>
+              </div>
+            </div>
+          </div>
+          <div class="row">
+            <div class="col-md-12">
+              <div class="card mb-4 mb-md-0">
+                <div class="card-body">
+                  <p class="mb-4"><span class="text-success font-italic me-1">Academic</span> Details
+                  </p>
+                  
+                  <div class="row">
+                    <div class="col-sm-3">
+                      <p class="mb-0">Program</p>
+                    </div>
+                    <div class="col-sm-9">
+                        {% if i.program %}
+                        <p class="text-muted mb-0">{{ i.program }}</p>
+                          {% else %}
+                          <p class="text-muted mb-0">Not Available</p>
+                        {% endif %}
+                    </div>
+                  </div>
+                  <hr>
+
+                  <div class="row">
+                    <div class="col-sm-3">
+                      <p class="mb-0">Entrollment year</p>
+                    </div>
+                    <div class="col-sm-9">
+                        {% if i.entroll_year %}
+                        <p class="text-muted mb-0">{{ i.entroll_year }}</p>
+                          {% else %}
+                          <p class="text-muted mb-0">Not Available</p>
+                        {% endif %}
+                    </div>
+                  </div>
+                  <hr>
+                  <div class="row">
+                    <div class="col-sm-3">
+                      <p class="mb-0">Passout year</p>
+                    </div>
+                    <div class="col-sm-9">
+                        {% if i.passout_year %}
+                        <p class="text-muted mb-0">{{ i.passout_year }}</p>
+                          {% else %}
+                          <p class="text-muted mb-0">Not Available</p>
+                        {% endif %}
+                    </div>
+                  </div>
+                  <hr>
+                  <div class="row">
+                    <div class="col-sm-3">
+                      <p class="mb-0">Backlogs</p>
+                    </div>
+                    <div class="col-sm-9">
+                        {% if i.backlogs %}
+                        <p class="text-muted mb-0">{{ i.backlogs }}</p>
+                          {% else %}
+                          <p class="text-muted mb-0">Not Available</p>
+                        {% endif %}
+                    </div>
+                  </div>
+                  <hr>
+                  <div class="row">
+                    <div class="col-sm-3">
+                      <p class="mb-0">Current CGPA</p>
+                    </div>
+                    <div class="col-sm-9">
+                        {% if i.cgpa %}
+                        <p class="text-muted mb-0">{{ i.cgpa }}</p>
+                          {% else %}
+                          <p class="text-muted mb-0">Not Available</p>
+                        {% endif %}
+                    </div>
+                  </div>
+            
+                </div>
+              </div>
+            </div>
+            
+          </div>
+        </div>
+      </div>
+      {% endfor %}
+    </div>
+  </section>
+{% endblock %}

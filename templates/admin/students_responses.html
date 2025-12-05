@@ -1,0 +1,68 @@
+{% extends "admin/base.html" %}
+{% load static %}
+{% block content %}
+{% if message %}
+<script>
+alert("{{ message }}")
+</script>
+{% endif %}
+
+<div class="container add-emp">		
+    <center><h1 style="color:black;"><strong>Applied Placements</strong></h1><br></center>
+    <table class="table table-bordered table-hover">
+            <tr>			
+                <th class="p-3 mb-2 text-light" style="background:#10bc69;">Placement ID</th>
+                <th class="p-3 mb-2 text-light" style="background:#10bc69;">Company name</th>
+                <th class="p-3 mb-2 text-light" style="background:#10bc69;" colspan="2">Student Details</th>
+                <th class="p-3 mb-2 text-light" style="background:#10bc69;">Resume</th>
+
+                <th class="p-3 mb-2 text-light" style="background:#10bc69;" colspan="3">Status</th>
+
+            </tr> 
+            
+            {% for i in plc %}
+            <tr>
+                    <td>{{i.placement.p_id}}</td>
+                    <td>{{i.placement.company_name}}</td>
+                    <td>Name: {{i.student.user.first_name}}<br>
+                        Roll No: {{i.student.roll_no}}<br>
+                        Contact: {{ i.student.phone }}<br>
+                        College E-mail: {{ i.student.user.email }}<br>
+                        Personal E-mail: {{ i.student.p_email }}<br>
+                        Department: {{i.student.department }}<br>
+                        Passout Year: {{i.student.passout_year}}<br>
+                        CGPA: {{i.student.cgpa}}<br>
+                    </td>
+                    <td>
+                        Technical Skills: {{i.technical_skills}}<br>
+                        Soft Skills: {{i.soft_skills}}<br>
+                        Internships: {{i.internship}}<br>
+                        Projects: {{i.projects}}<br>
+                        Achievements: {{i.achivements}}<br>
+                        Certificates: <a href="{{i.certificate.url}}" target="_blank">View Certificate</a><br>
+
+                    </td>
+                    <td><a href="{{i.resume.url}}" target="_blank">View Resume</a></td>
+                    {% if i.status == 'added' %}
+                    <td><a href="approve_placement?id={{ i.id}}" class=" btn btn-success">Approve</a></td>
+                    <td><a href="reject_placement?id={{ i.id}}" class=" btn btn-danger">Reject</a></td>
+                    {% elif i.status == 'interview completed' %}
+                    <td>Interview completed</td>
+                    <td><a href="upload_offer?id={{ i.id}}" class=" btn btn-success">upload offer letter</a></td>
+                    <td><a href="not_selected?id={{ i.id}}" class=" btn btn-danger">Not Selected</a></td>
+                    {% elif i.status == 'offer letter uploaded' %}
+                    <td><a href="{{i.offer_letter.url}}" target="_blank">Offer Letter</a></td>
+                    {% else %}
+                    <td>{{i.status}}</td>
+  
+                    {% endif %}
+
+            </tr>  
+            {% endfor %}
+
+
+            
+    </table>
+</div>
+
+{% endblock %}
